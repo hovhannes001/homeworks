@@ -1,5 +1,5 @@
 let arr = [1,[2,[3,[4]], 5]];
-function het_patatel(arr, new_arr = new Array()){
+function het_patatel(arr, new_arr = new Array){
     for(let elem of arr){
         if (typeof elem === "number"){
             new_arr.push(elem);

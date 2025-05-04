@@ -99,6 +99,7 @@
 // // console.log(obj)
 
 // console.log("\t\v continue\n");
+
 // const geval = eval;
 // let x = "global";
 // y = "global";
@@ -147,22 +148,184 @@
 // console.log(set.entries());
 
 // Define the object
-const obj = {
-    name: "TestObject",
-    regularFunc: function () {
-      console.log("regularFunc this:", this);
-    },
-    arrowFunc: () => {
-      console.log("arrowFunc this:", this);
-    }
-  };
+// const obj = {
+//     name: "TestObject",
+//     regularFunc: function () {
+//       console.log("regularFunc this:", this);
+//     },
+//     arrowFunc: () => {
+//       console.log("arrowFunc this:", this);
+//     }
+//   };
   
   
-  console.log("Global this:", this);
+//   console.log("Global this:", this);
   
 
-  obj.regularFunc(); 
-  obj.arrowFunc();   
+//   obj.regularFunc(); 
+//   obj.arrowFunc();   
   
 //regular functioni jamanak this@ objn e qani vor haytararvel e henc objecti mej
 //arrow functionneri jamanak this@ voroshvum e aytnex vortex kanchvel e
+
+// m = 10;
+// console.log(typeof m);  
+// let point = {
+//   x: 1100000000,
+//   y: 2000,
+//   toString: function() { return `(${this.x}, ${this.y})`; },
+//   toLocaleString: function() {
+//   return `(${this.x.toLocaleString()}, ${this.y.toLocaleString()})`;
+//   }
+//   };
+//   console.log(point.toString());
+//   console.log(point.toLocaleString());
+
+//kayfot havayi function
+// (1100000000, 2000)
+// (1,100,000,000, 2,000)
+// let aq = [1,2,3,4,5]
+
+// function a(elem){
+//   return  elem %2 === 0? true : false;
+// }
+// console.log(aq.filter(a));
+// a = [];
+// a[-1.23] = true;
+// a["1000"] = 0;
+// a[1.000] = 1;
+
+// console.log(a);
+// for(let i of a){
+//   console.log(i);
+// }
+// let a = [1,1,1];
+// // delete a[2];
+// // a now has no element at index 2
+// console.log(2 in a)
+// // => false: no array index 2 is defined
+// // a.length
+// let letters = "hello world";
+// let vowels = "";
+// for(let i = 0; i < letters.length; i++) {
+// let letter = letters[i];
+// if (/[aeiou]/.test(letter)) {   //regular expression
+// vowels += letter;
+// }
+// }
+// console.log(vowels); 
+
+// let a = [1,2,3,4,5];
+// console.log(a.findIndex(x => x === 3));
+// console.log(a.findIndex(x => x < 0));
+// console.log(a.find(x => x % 5 === 0));
+// console.log(a.find(x => x % 7 === 0));
+// => 2; the value 3 appears at index 2
+// => -1; no negative numbers in the array
+// => 5: this is a multiple of 5
+
+// let a = [1,2,3,4,5];
+// console.log(a.every(x => x < 10));
+// // => true: all values are < 10.
+// console.log(a.every(x => x % 2 === 0));
+
+// console.log([1, [2, 3]].flat())
+// console.log([1, [2, [3]]].flat());
+// => [1, 2, 3]
+// => [1, 2, [3]]
+
+// let a = [1,true,3,NaN];
+// console.log(a.includes(true));
+// console.log(a.includes(2));
+// console.log(a.includes(NaN));
+// console.log(a.indexOf(NaN));
+
+// function max(first=-Infinity, ...rest) {
+//     let maxValue = first; // Start by assuming the first arg is biggest
+//     // Then loop through the rest of the arguments, looking for bigger
+//     console.log(typeof rest, rest);
+//     // Return the biggest
+//     return maxValue;
+//     }
+
+// max(1,2,3,4);
+
+// function max(x) {
+//     let maxValue = -Infinity;
+//     // Loop through the arguments, looking for, and remembering, the biggest.
+//     console.log(typeof arguments,arguments);
+//     for(let i = 0; i < arguments.length; i++) {
+//         if (arguments[i] > maxValue) maxValue = arguments[i];
+//     }
+//     console.log(max.name);
+//     // Return the biggest
+//     return maxValue;
+//     }
+//     console.log(max(1, 10, 100, 2, 3, 1000, 4, 5, 6));
+//     // => 1000
+
+// let scope = "global scope";
+// function checkscope() {
+// let scope = "local scope";
+// function f() { return scope; }
+// return f;
+// }
+// let s = console.log(checkscope()());
+
+// function counter() {
+//     let n = 0;
+//     return {
+//     count: function() { return n++; },
+//     reset: function() { n = 0; }
+//     };
+//     }
+// let c = counter(), d = counter();
+// console.log(c.count());
+// console.log(d.count());
+// c.reset();
+// console.log(c.count());
+// console.log(d.count());
+
+// function x(){
+//     console.log(this);
+// }
+// this.val = "hello";
+// let y = () => console.log(this);
+// y();
+// // console.log(val);
+// globalThis.val = "grno";
+// x();
+
+// class Counter{
+//     constructor(){
+//         this.count = 0;
+//     }
+//     increment(){
+//         this.count++;
+//         console.log(this.count);
+//     }
+// }
+// let counter = new Counter();
+// setTimeout(counter.increment,1000);
+
+// console.log(NaN + 1);
+// console.log(undefined++);
+// console.log(undefined++);
+
+async function foo(){
+    let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+    let a = await response.json();
+
+    let filtered = a.filter((elem) => {
+        if (elem.id > 10) {
+            return true;
+        }
+        return false;
+    });
+
+    console.log(filtered);
+}
+
+foo();
+
