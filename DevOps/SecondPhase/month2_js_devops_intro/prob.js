@@ -309,23 +309,82 @@
 // setTimeout(counter.increment,1000);
 
 // console.log(NaN + 1);
-// console.log(undefined++);
-// console.log(undefined++);
+// // console.log(undefined++);
+// // console.log(undefined++);
 
-async function foo(){
-    let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+// async function foo(){
+//     let response = await fetch("https://jsonplaceholder.typicode.com/posts");
 
-    let a = await response.json();
+//     let a = await response.json();
 
-    let filtered = a.filter((elem) => {
-        if (elem.id > 10) {
-            return true;
-        }
-        return false;
-    });
+//     let filtered = a.filter((elem) => {
+//         if (elem.id > 10) {
+//             return true;
+//         }
+//         return false;
+//     });
 
-    console.log(filtered);
-}
+//     console.log(filtered);
+// }
 
-foo();
+// foo();
 
+// var b = 11;
+// a = 10;
+// console.log(globalThis);
+// console.log(this);
+// console.log(module);
+// console.log(global);
+// this = global;
+// console.log(this);
+
+// function foo() {
+//     console.log( this.a );
+//     }
+//     function doFoo(fn) {
+//     // `fn` is just another reference to `foo`
+//     fn(); // <-- call-site!
+//     }
+//     var obj = {
+//     a: 2,
+//     foo: foo
+//     };
+
+// var a = "oops, global"; // `a` also property on global object
+// doFoo( obj.foo );
+// b = 10;
+// console.log(Object.keys(global));
+// // console.log(global)
+// "use strict";
+// let myobj = {};
+
+
+// Object.defineProperty(myobj,"a",{
+//     value: 10,
+//     enumerable: false,
+//     writable: true,
+//     configurable: false
+// });
+// myobj.b =4
+// console.log(myobj);
+// console.log(Object.getOwnPropertyNames(myobj));
+
+
+Something = {
+    cool: function() {
+        this.greeting = "Hello World";
+        this.count = this.count ? this.count + 1 : 1;
+    }
+};
+Something.cool();
+console.log(Something.greeting); // "Hello World"
+console.log(Something.count); // 1
+Another = {
+    cool: function() {
+    // implicit mixin of `Something` to `Another`
+        Something.cool.call(this);
+    }
+};
+Another.cool();
+console.log(Another.greeting); // "Hello World"
+console.log(Another.count); // 1 (not shared state with `Something`)
